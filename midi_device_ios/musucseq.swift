@@ -304,7 +304,7 @@ public class midi_seq
             log(str:"")
             MusicEventIteratorNextEvent(event!);
             MusicEventIteratorHasCurrentEvent(event!, &hasNext);
-        
+        }
         previous_note = midi_song?.head
         current_note = midi_song?.head
     }
