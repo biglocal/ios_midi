@@ -243,6 +243,7 @@ public class midi_seq
         MusicSequenceFileLoad(musicSequence!, midiFileURL as! CFURL, typeId, flags)
         var tempo_track:MusicTrack?
         MusicSequenceGetIndTrack(musicSequence!, 1,&tempo_track)
+        //MusicSequenceGetTempoTrack(musicSequence!, &tempo_track)
         var event:MusicEventIterator?
         NewMusicEventIterator(tempo_track!,  &event)
         var property_len:UInt32 = 0
@@ -270,10 +271,11 @@ public class midi_seq
                                            &eventType,
                                            &eventData,
                                            &eventDataSize);
-            
+        
             // Process each event he
             switch(eventType)
             {
+            
             case kMusicEventType_Meta:
                 print("Meta")
             case kMusicEventType_User:
@@ -295,15 +297,13 @@ public class midi_seq
                 
                 midi_song?.append(note_msg: newNote, tick:tick, beat:beat_time)
             case kMusicEventType_MIDIChannelMessage:
-                print("")
+                print("Channel")
             default:
                 print("unknown")
             }
-            
+            log(str:"")
             MusicEventIteratorNextEvent(event!);
             MusicEventIteratorHasCurrentEvent(event!, &hasNext);
-            
-        }
         
         previous_note = midi_song?.head
         current_note = midi_song?.head

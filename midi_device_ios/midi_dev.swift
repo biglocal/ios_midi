@@ -158,7 +158,9 @@ class midi_dev
             cc = 127
         }
         packet1.data.2 = cc
-        log(str:"quantication_quantity:\(quantication_quantity) cc:\(packet.data.2) change to:\(cc)")
+
+        log(str:"quantication_quantity:\(quantication_quantity) cc:\(packet.data.2) change to:\(packet1.data.2)")
+        
         midi_seq_.change_controller(value:cc, channel:current_channel)
         
         var packetList:MIDIPacketList = MIDIPacketList(numPackets: 1, packet: packet1)

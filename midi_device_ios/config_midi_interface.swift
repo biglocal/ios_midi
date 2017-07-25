@@ -49,6 +49,7 @@ class config_midi_interface: UIViewController, UITabBarControllerDelegate, UITex
     @IBOutlet weak var quantizatin_cc_show: UILabel!
     @IBOutlet var quantization_cc: UIView!
     @IBOutlet weak var quantization_slider: UISlider!
+    @IBOutlet weak var cc_value: UILabel!
     
     
     @IBAction func change_local_synth(_ sender: Any) {
